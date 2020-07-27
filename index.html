@@ -1325,11 +1325,11 @@ edges = new vis.DataSet([
       maxVelocity: 146,
       solver: 'forceAtlas2Based',
       timestep: 0.35,
-      stabilization: {
+      stabilization: false, /*{
         enabled: true,
         iterations: 2000,
         updateInterval: 25,
-      },
+      },*/
     },
 /*
     physics: {
@@ -1392,6 +1392,7 @@ edges = new vis.DataSet([
 
 }
 
+document.getElementById('loadingBar').style.display = 'none'; // show graph building seems nicer
 window.addEventListener('load', () => {
   draw();
 });
