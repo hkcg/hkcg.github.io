@@ -1,0 +1,20 @@
+var d=[
+    {district: "中西區", scheme: "dark"},
+    {district: "九龍城", scheme: "dark"},
+    {district: "元朗", scheme: "dark"},
+    {district: "北區", scheme: "dark"},
+    {district: "南區", scheme: "dark"},
+    {district: "大埔", scheme: "dark"},
+    {district: "屯門", scheme: "light"},
+    {district: "東區", scheme: "dark"},
+    {district: "沙田", scheme: "dark"},
+    {district: "油尖旺", scheme: "dark"},
+    {district: "深水埗", scheme: "light"},
+    {district: "灣仔", scheme: "dark"},
+    {district: "荃灣", scheme: "light"},
+    {district: "葵青", scheme: "dark"},
+    {district: "西貢", scheme: "light"},
+    {district: "觀塘", scheme: "dark"},
+    {district: "離島", scheme: "light"},
+    {district: "黃大仙", scheme: "dark"}
+];
