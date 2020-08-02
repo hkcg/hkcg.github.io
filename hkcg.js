@@ -3,6 +3,7 @@ window.addEventListener('load', () => {
 });
 
 var selectedDistricts=[];  //['油尖旺','九龍城','深水埗'];
+var minCount=2;
 var n1=[];
 var e1=[];
 
@@ -100,7 +101,7 @@ function find(sDistricts) {
 
     // update building nodes 
     for (var i=0; i<sDistricts.length; i++) {
-        let found=n.filter(found=>found.district===sDistricts[i]);
+        let found=n.filter(found=>found.district===sDistricts[i] && found.value>=minCount);
         foundNodes.push(...found);
     }
     
