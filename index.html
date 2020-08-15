@@ -1,161 +1,178 @@
 <html>
 <head>
-    <meta charset='UTF-8'>
-    <title>患者住處/曾到訪地點之關聯 (最後更新於2020年8月14日)</title>
-    <style>
+<meta charset='UTF-8'>
+<title>患者住處/曾到訪地點之關聯 (最後更新於2020年8月15日)</title>
+<style>
+html, body {
+  font: 10pt arial;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
 
-        html, body {
-            font: 10pt arial;
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-        }
+#heading{
+  width: 100%;
+  height: 40px;
+  text-align:center;
+  background-color:#505291;
+  color: #ffffff;
+  font-size:20pt;
+  font-weight:bolder;
+  font-family:arial,MingLiu;
+}
 
-        #heading {
-            width: 100%;
-            height: 40px;
-            text-align: center;
-            background-color: #505291;
-            color: #ffffff;
-            font-size: 20pt;
-            font-weight: bolder;
-            font-family: arial,MingLiu;
-        }
+#wrapper{
+  position: absolute;
+  top: 40px;
+  left: 150px;
+  bottom: 0px;
+  height: calc(100% - 40px);
+  width: calc(100% - 150px);
+  background-color:#f5f5f6;
+}
 
-        #wrapper {
-            position: absolute;
-            top: 40px;
-            left: 150px;
-            bottom: 0px;
-            height: calc(100% - 40px);
-            width: calc(100% - 150px);
-            background-color: #f5f5f6;
-        }
+#diagram{
+  position:absolute;
+  width:100%;
+  height:100%;
+  padding:0;
+  margin:0;
+}
 
-        #diagram {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
+#loadingBar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(195, 195, 196, 0.8);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
 
-        #loadingBar {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(195, 195, 196, 0.8);
-            -webkit-transition: all 0.5s ease;
-            -moz-transition: all 0.5s ease;
-            -ms-transition: all 0.5s ease;
-            -o-transition: all 0.5s ease;
-            transition: all 0.5s ease;
-            opacity: 1;
-        }
+#text {
+  position: absolute;
+  top: 8px;
+  left: 530px;
+  width: 30px;
+  height: 50px;
+  margin: auto auto auto auto;
+  font-size: 22px;
+  color: #666666;
+}
 
-        #text {
-            position: absolute;
-            top: 8px;
-            left: 530px;
-            width: 30px;
-            height: 50px;
-            margin: auto auto auto auto;
-            font-size: 22px;
-            color: #666666;
-        }
+div.outerBorder {
+  position: relative;
+  top: 45%;
+  width: 600px;
+  height: 44px;
+  margin: auto auto auto auto;
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  background: rgb(243, 242, 249); /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    rgba(243, 242, 249, 1) 0%,
+    rgba(237, 237, 237, 1) 100%
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(243, 242, 249, 1)),
+    color-stop(100%, rgba(237, 237, 237, 1))
+  ); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(243, 242, 249, 1) 0%,
+    rgba(237, 237, 237, 1) 100%
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(
+    top,
+    rgba(243, 242, 249, 1) 0%,
+    rgba(237, 237, 237, 1) 100%
+  ); /* Opera 11.10+ */
+  background: -ms-linear-gradient(
+    top,
+    rgba(243, 242, 249, 1) 0%,
+    rgba(237, 237, 237, 1) 100%
+  ); /* IE10+ */
+  background: linear-gradient(
+    to bottom,
+    rgba(243, 242, 249, 1) 0%,
+    rgba(237, 237, 237, 1) 100%
+  ); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f2f9', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+  border-radius: 72px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
 
-        div.outerBorder {
-            position: relative;
-            top: 45%;
-            width: 600px;
-            height: 44px;
-            margin: auto auto auto auto;
-            border: 8px solid rgba(0, 0, 0, 0.1);
-            background: rgb(243, 242, 249); /* Old browsers */
-            background: -moz-linear-gradient( top, rgba(243, 242, 249, 1) 0%, rgba(237, 237, 237, 1) 100% ); /* FF3.6+ */
-            background: -webkit-gradient( linear, left top, left bottom, color-stop(0%, rgba(243, 242, 249, 1)), color-stop(100%, rgba(237, 237, 237, 1)) ); /* Chrome,Safari4+ */
-            background: -webkit-linear-gradient( top, rgba(243, 242, 249, 1) 0%, rgba(237, 237, 237, 1) 100% ); /* Chrome10+,Safari5.1+ */
-            background: -o-linear-gradient( top, rgba(243, 242, 249, 1) 0%, rgba(237, 237, 237, 1) 100% ); /* Opera 11.10+ */
-            background: -ms-linear-gradient( top, rgba(243, 242, 249, 1) 0%, rgba(237, 237, 237, 1) 100% ); /* IE10+ */
-            background: linear-gradient( to bottom, rgba(243, 242, 249, 1) 0%, rgba(237, 237, 237, 1) 100% ); /* W3C */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f2f9', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
-            border-radius: 72px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        }
+#border {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 500px;
+  height: 23px;
+  margin: auto auto auto auto;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
 
-        #border {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 500px;
-            height: 23px;
-            margin: auto auto auto auto;
-            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
+#bar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 20px;
+  height: 20px;
+  margin: auto auto auto auto;
+  border-radius: 11px;
+  border: 2px solid rgba(30, 30, 30, 0.05);
+  background: rgb(80, 82, 145); /* Old browsers */
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.4);
+}
 
-        #bar {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 20px;
-            height: 20px;
-            margin: auto auto auto auto;
-            border-radius: 11px;
-            border: 2px solid rgba(30, 30, 30, 0.05);
-            background: rgb(80, 82, 145); /* Old browsers */
-            box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.4);
-        }
-
-        #leftbar {
-            position: absolute;
-            justify-content: center;
-            text-align: center;
-            top: 40px;
-            left: 0px;
-            bottom: 0px;
-            width: 150px;
-            height: calc(100% - 40px);
-            background-color: #eff0f3;
-        }
-
-        table#district {
-            margin-left: auto;
-            margin-right: auto;
-            font-family: arial,helv,"Noto Sans CJK TC", STHeiti, "Microsoft YaHei", "Microsoft JhengHei";
-            text-shadow: #a0a0a1 0.01em 0.01em 0.05em !important;
-        }
-
-        #selects {
-            overflow-y: auto;
-        }
-
-        .dark {
-            color: #000000;
-        }
-
-        .light {
-            color: #f0f0f0;
-        }
-
-        .bold {
-            font-weight: bolder;
-        }
-
-        .check {
-            font-size: 10pt;
-            font-weight: normal;
-            text-shadow: none;
-        }
-
-        #selects option[value="中西區"] {
-            background: #ff0000;
-        }
-
-        #selects option[value="中西區"] {
+#leftbar {
+  position:absolute;
+  justify-content: center;
+  text-align: center;
+  top: 40px;
+  left: 0px;
+  bottom: 0px;
+  width: 150px;
+  height: calc(100% - 40px);
+  background-color:#eff0f3;
+}
+table#district {
+  margin-left:auto;
+  margin-right:auto;
+  font-family:arial,helv,"Noto Sans CJK TC", STHeiti, "Microsoft YaHei", "Microsoft JhengHei";
+  text-shadow: #a0a0a1 0.01em 0.01em 0.05em !important;
+}
+#selects {
+  overflow-y: auto;
+}
+.dark {
+color:#000000;
+}
+.light {
+color:#f0f0f0;
+}
+.bold {
+  font-weight:bolder;
+}
+.check {
+  font-size:10pt;
+  font-weight:normal;
+  text-shadow:none;
+}
+#selects option[value="中西區"] {
+  background: #ff0000;
+}
+#selects option[value="中西區"] {
 background: #f6e5c4;
 }
 #selects option[value="九龍城"] {
@@ -210,102 +227,124 @@ background: #111111;
 background: #fed902;
 }
 
-    </style>
+</style>
+<link href="css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <div id='heading'>😷患者住處/曾到訪地點之關聯 (最後更新於2020年8月14日)</div>
-    <div id='leftbar'>
-        <br>
-        <table id='district' border=0>
-            <tr align=left>
-                <td class='bold'>地區：</td>
-            </tr>
-            <tr>
-                <td>
-                    <select name='selects[]' id='selects' size=19 onchange='changeDistrict()' multiple>
-                        <option value=''>(多選)</option>
-                    </select><br>
-                    <input type="checkbox" id="chk" name="chk" value="全選" onclick='checkAll()'><font class='check'>全選</font>
-                </td>
-            </tr>
-        </table>
+<div id='heading'>
+<table><tr><td id=heading nowrap style='width:40px;align:center'><i class='fas fa-bars' onclick='toggle_leftbar(state)'></i></td>
+<td id=heading style='align:center'>😷患者住處/曾到訪地點之關聯 (最後更新於2020年8月15日)</td>
+<td style='width:40px'></td></tr></table>
+</div>
+<div id='leftbar'><br>
+<table id='district' border=0><tr align=left>
+<td class='bold'>地區：</td></tr>
+<tr><td>
+<select name='selects[]' id='selects' size=19 onchange='changeDistrict()' multiple>
+  <option value=''>(多選)</option>
+</select><br>
+<input type="checkbox" id="chk" name="chk" value="全選" onclick='checkAll()'><font class='check'>全選</font>
+</td></tr>
+</table>
+</div>
+<div id='wrapper'>
+  <div id='diagram'></div>
+  <div id='loadingBar'>
+    <div class='outerBorder'>
+      <div id='text'>0%</div>
+      <div id='border'>
+        <div id='bar'></div>
+      </div>
     </div>
-    <div id='wrapper'>
-        <div id='diagram'></div>
-        <div id='loadingBar'>
-            <div class='outerBorder'>
-                <div id='text'>0%</div>
-                <div id='border'>
-                    <div id='bar'></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script type='text/javascript' src='https://unpkg.com/vis-network/standalone/umd/vis-network.min.js'></script>
-    <script type='text/javascript' src='data/chpdata20081422.js'></script>
+  </div>
+</div>
+<script language='javascript'>
+var state=false;
 
-    <script language='javascript'>var nodes = null;
-        var edges = null;
-        var network = null;
+function toggle_leftbar(show) {
+  state=!state;
+  if (show) {
+	document.getElementById('wrapper').style.left='150px';
+	document.getElementById('wrapper').style.width='calc(100%-150px)';
+	document.getElementById('leftbar').style.visibility='visible';
+	document.getElementById('leftbar').style.left='0';
+	document.getElementById('leftbar').style.width='150px';
+	document.getElementById('leftbar').style.zIndex=9999;
+  } else  { // hide
+  	document.getElementById('leftbar').style.visibility='hidden';
+	document.getElementById('leftbar').style.left='0';
+	document.getElementById('leftbar').style.width='0px';
+	document.getElementById('wrapper').style.left='0px';
+	document.getElementById('wrapper').style.width='calc(100%)';
+  }
+}
+</script>
+<script type='text/javascript' src='https://unpkg.com/vis-network/standalone/umd/vis-network.min.js'></script>
+<script type='text/javascript' src='data/chpdata20081522.js'></script>
 
-        // Called when the Visualization API is loaded.
-        function draw() {
-            // Create a data table with nodes.
-            nodes = new vis.DataSet(n1);
+<script language='javascript'>
+var nodes = null;
+var edges = null;
+var network = null;
 
-            // Create a data table with links.
-            edges = new vis.DataSet(e1);
+// Called when the Visualization API is loaded.
+function draw() {
+  // Create a data table with nodes.
+  nodes = new vis.DataSet(n1);
 
-            // create a network
-            var container = document.getElementById('diagram');
-            var data = {
-                nodes: nodes,
-                edges: edges,
-            };
-            var options = {
-                nodes: {
-                    scaling: {
-                        min: 24, //16
-                        max: 62, //32
-                    },
-                    borderWidth: 2,
-                    shadow: true,
-                },
-                edges: {
-                    color: 'gray',
-                    smooth: true,
-                    font: {
-                        size: 20, //18
-                        color: '#008800'
-                    },
-                    width: 1,
-                    shadow: true,
-                },
-                physics: {
-                    forceAtlas2Based: {
-                        gravitationalConstant: -26,
-                        centralGravity: 0.005,
-                        springLength: 230,
-                        springConstant: 0.18,
-                    },
-                    maxVelocity: 146,
-                    solver: 'forceAtlas2Based',
-                    timestep: 0.35,
-                    stabilization: false, /*{
-            enabled: true,
-            iterations: 2000,
-            updateInterval: 25,
-          },*/
-                },
-                /*
-                    physics: {
-                      barnesHut: { gravitationalConstant: -30000},
-                      stabilization: false, //true,
-                      //iterations: 100,
-                      //updateInterval: 25,
-                    },
-                */
-                groups: { 
+// Create a data table with links.
+edges = new vis.DataSet(e1);
+
+  // create a network
+  var container = document.getElementById('diagram');
+  var data = {
+    nodes: nodes,
+    edges: edges,
+  };
+  var options = {
+    nodes: {
+      scaling: {
+        min: 24, //16
+        max: 62, //32
+      },
+      borderWidth: 2,
+      shadow: true,
+    },
+    edges: {
+      color: 'gray',
+      smooth: true,
+      font: {
+          size: 20, //18
+          color: '#008800'
+      },
+      width:1,
+      shadow: true,
+    },
+    physics: {
+      forceAtlas2Based: {
+        gravitationalConstant: -26,
+        centralGravity: 0.005,
+        springLength: 230,
+        springConstant: 0.18,
+      },
+      maxVelocity: 146,
+      solver: 'forceAtlas2Based',
+      timestep: 0.35,
+      stabilization: false, /*{
+        enabled: true,
+        iterations: 2000,
+        updateInterval: 25,
+      },*/
+    },
+/*
+    physics: {
+      barnesHut: { gravitationalConstant: -30000},
+      stabilization: false, //true,
+      //iterations: 100,
+      //updateInterval: 25,
+    },
+*/
+    groups: {
       patient: {
         shape: 'dot',
         color: '#cbefef',
@@ -495,44 +534,47 @@ background: #fed902;
           bold: '16px arial black'
         },
       },
- },
-            };
-            network = new vis.Network(container, data, options);
+},
+  };
+  network = new vis.Network(container, data, options);
 
-            network.on('click', function (params) { // or selectNode
-                if (params.nodes.length === 1) {
-                    var node = nodes.get(params.nodes[0]);
-                    if (node.url == '') {
-                        window.open('https://www.chp.gov.hk/files/pdf/building_list_chi.pdf', '_blank');
-                    } else {
-                        window.open('https://wars.vote4.hk/cases/' + node.url, '_blank');
-                    }
-                }
-            });
-            network.on('stabilizationProgress', function (params) {
-                var maxWidth = 496;
-                var minWidth = 20;
-                var widthFactor = params.iterations / params.total;
-                var width = Math.max(minWidth, maxWidth * widthFactor);
+  network.on( 'click', function(params) { // or selectNode
+    if (params.nodes.length === 1) { 
+      var node = nodes.get(params.nodes[0]);
+      if (node.url=='') {
+        window.open('https://www.chp.gov.hk/files/pdf/building_list_chi.pdf', '_blank');
+      } else {
+        window.open('https://wars.vote4.hk/cases/'+node.url, '_blank');
+      }
+   }
+  });
+  network.on('stabilizationProgress', function (params) {
+    var maxWidth = 496;
+    var minWidth = 20;
+    var widthFactor = params.iterations / params.total;
+    var width = Math.max(minWidth, maxWidth * widthFactor);
 
-                document.getElementById('bar').style.width = width + 'px';
-                document.getElementById('text').innerHTML =
-                    Math.round(widthFactor * 100) + '%';
-            });
-            network.once('stabilizationIterationsDone', function () {
-                document.getElementById('text').innerHTML = '100%';
-                document.getElementById('bar').style.width = '496px';
-                document.getElementById('loadingBar').style.opacity = 0;
-                // really clean the dom element
-                setTimeout(function () {
-                    document.getElementById('loadingBar').style.display = 'none';
-                }, 500);
-            });
+    document.getElementById('bar').style.width = width + 'px';
+    document.getElementById('text').innerHTML =
+      Math.round(widthFactor * 100) + '%';
+  });
+  network.once('stabilizationIterationsDone', function () {
+    document.getElementById('text').innerHTML = '100%';
+    document.getElementById('bar').style.width = '496px';
+    document.getElementById('loadingBar').style.opacity = 0;
+    // really clean the dom element
+    setTimeout(function () {
+      document.getElementById('loadingBar').style.display = 'none';
+    }, 500);
+  });
 
-        }
+}
 
-        document.getElementById('loadingBar').style.display = 'none'; // show graph building seems nicer</script>
-    <script type='text/javascript' src='hkcg.js'></script>
+document.getElementById('loadingBar').style.display = 'none'; // show graph building seems nicer
+
+</script>
+<script type='text/javascript' src='hkcg.js'></script>
 <script type='text/javascript' src='districts.js'></script>
 </body>
 </html>
+
